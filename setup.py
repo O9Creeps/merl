@@ -7,11 +7,9 @@ setup(
     url='https://github.com/O9Creeps/merl',
     author='O9CreeperBoi',
     author_email='not provided',    
-    license='none, do whatever you want',
+    license='MIT',
     packages=['merl'],
-    install_requires=['time',
-                      'random',
-                      ],
+    install_requires=[],
 
     classifiers=[
         'Development Status :: 4 - Beta',
