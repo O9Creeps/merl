@@ -1,7 +1,7 @@
 # merl
 A useless python library. Developed using the code.org IDE, because why not.
 
-Not sure how to actually make it a library so give me some time.
+If 'pip install merl' doesn't work, then gimmie some time i gotta figure it out.
 
 ## Functions
 ### printanim(msg)
