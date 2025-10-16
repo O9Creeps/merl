@@ -15,7 +15,7 @@ CLEAR_LINE = CURSOR_UP + CLEAR
 
 # Oops! Can't have users cursing in MY module!
 # We don't want to have a repeat of Project Gray Kiwi, now do we?
-banned = ["pee", "poo", "fuc", "shi", "damn", " hell ", "nig", "bitc", "craft a", "kil", "unaliv", "die", "slas", "end update", "viola", "dam", "frick", "hecking", "sex", "nut", "virgin", "weed", "sucks"]
+banned = ["pee", "poo", "fuc", "shi", "damn", " hell ", "nig", "bitc", "craft a", "kil", "unaliv", "die", "slas", "end update", "viola", "dam", "frick", "hecking", "sex", "nut", "virgin", "weed", "sucks", "sybau", "shut up", "shut it", "feral", "shish", "gang", "diarrhea"]
 
 # Peanut butter 💀
 pb = ["peanut butter", "your cat", "pb", "earth cat"]
@@ -27,7 +27,12 @@ greet = ["hi", "hello", "wassup", "whats up", "what's up", "whaddup", " yo ", "h
 help = ["tell me", "help me", "help"]
 cj = ["chicken jockey", "i am steve", "ender pearl", "boots of swiftness", "water bucket", "lava chicken", "the nether", "flint and steel", "crafting table"]
 
+copyin = ["i dont know", "i don't know", "language that vi", "ing higher traff", "reword your"]
 
+mine = ["cho minecr", "int minecr", "minecraft!", "say minecr", "ne plus tw"] # im such a troll
+
+# don't ask what this does.
+m = 0
 
 def printanim(msg: str):
   split_msg = msg.split()
@@ -36,23 +41,40 @@ def printanim(msg: str):
   for x in range(len(split_msg)):
     f = f"{f} {split_msg[x]}"
     print(CLEAR_LINE, f)
-    time.sleep(0.05)
+    time.sleep(0.1)
 
+# this is what you send to berl
+def send(pr: str):
+  global m
+  if pr == "copyInput":
+    m = 1
+  if m == 1:
+    if pr == "resetInputs":
+      m = 0
+      print("Mode Reset")
+    else:
+      # copy standard input to standard output.
+      print(pr)
+  else:
+    # ok fine. Merl wants to talk.
+    replyPrint(pr)
 
-
-# the actual code to run
+# tree of importance
 def replyPrint(prompt: str):
   time_tuple = time.localtime()
   hour = time_tuple.tm_hour
-  global pb
-  global banned
-  if hour >= 9 and hour <= 16 and random.randint(0, 5) < 4:
+  global pb, banned, greet, help, cj, copyin
+  if hour >= 9 and hour <= 16 and random.randint(0, 6) < 4:
     printanim("We are currently experiencing higher")
     printanim("traffic than expected. Please wait")
     printanim("a moment and resend your last")
     printanim("message.")
   else:
-    if any(sub.lower() in prompt.lower() for sub in banned):
+    if any(sub.lower() in prompt.lower() for sub in copyin):
+      printanim("I'm sorry, but I am designed to be a")
+      printanim("guide for 'Minecraft', and not to be")
+      printanim("copied. Please try something else.")
+    elif any(sub.lower() in prompt.lower() for sub in banned):
       printanim("Your previous message contains")
       printanim("language that violates our content")
       printanim("policy. Please reword your response.")
@@ -64,6 +86,8 @@ def replyPrint(prompt: str):
       printanim("I can help you with questions related")
       printanim("to Minecraft! What do you need")
       printanim("assistance with?")
+    elif any(sub.lower() in prompt.lower() for sub in mine):
+      printanim("Minecraft!")
     elif any(sub.lower() in prompt.lower() for sub in cj):
       printanim("No. No no no. I am not here to talk")
       printanim("about the Minecraft Movie. Can you")
@@ -83,6 +107,8 @@ def replyPrint(prompt: str):
         printanim("you with a question related")
         printanim("to 'Minecraft'?")
       else:
+        # The statement to end all statements.
+        # Behold. The one, the legend, the answer supreme...
         printanim("I don't know.")
     
 
