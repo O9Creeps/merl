@@ -16,6 +16,7 @@ setup(
         'Intended Audience :: Developers',
         'License :: Freeware',  
         'Operating System :: OS Independent',        
-        'Programming Language :: Python :: 3'
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.10'
     ],
 )    
