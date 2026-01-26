@@ -121,7 +121,7 @@ def markprintanim(msg: str):
     f = f"{f} {split_msg[x]}"
     if x % 7 == 0: print(""); f = split_msg[x]
     print(CLEAR_LINE, f)
-    time.sleep(0.01)
+    time.sleep(0.1)
 
 def printanim(msg: str):
   split_msg = msg.split()
