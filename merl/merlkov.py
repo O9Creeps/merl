@@ -6,7 +6,6 @@
 # perfect (looking at you, 'msg_pb'!).
 
 import random
-from time import sleep
 
 msg_blank = {
   "_init_" : [["1", "2"], [1, 1]],
