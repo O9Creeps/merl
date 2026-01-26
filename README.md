@@ -70,13 +70,55 @@ merl.send("resetInputs")
 
 
 ---
-## Functions that are supposed to be hidden
-### printanim(msg)
+## The cursed section
+Ok im not gonna lie, this module is pretty easy to mess up in all sorts of ways. That's why you should(n't) mess with the underlying variables and the functions! But because everyone gets a copy, everyone can do what they want.
+
+### Functions that are supposed to be hidden
+#### printanim(msg)
 Prints 'msg' where 'msg' is a string. If 'msg' does not have spaces, then it all prints at once. Else, it prints word-by-word.
 If 'msg' spans longer than the terminal's horizontal size, then it will start duplicating the messages with each line.
 Keep each 'msg' short, like Merl!
-
-### replyPrint(prompt)
+#### replyPrint(prompt)
 Where 'prompt' is a string. This forces Merl to reply whatever, based on what you put in.
 The reason why there are 3 "send" functions is because it has Merl check a thing or two before actually doing the reply checks, too.
 Expect "I don't know." to show up more than once. With the exception of your system's time being between 9 AM and 4 PM, of course, because then you get a high traffic message more than actual answers! (If that's what you could call them)
+
+### A cursed thing you can do
+For the ***O L D E S T*** version of Merl, do this in your terminal!:
+```
+pip install merl==0.1.0
+```
+This way you'll be able to interact with the stupidest version of Merl to ever see the internet. Or your computer. I don't care.
+
+### Another cursed thing you can do
+Look at this code:
+```python
+import math
+
+print(math.pi)
+# prints pi as per usual... but then...
+
+math.pi = 3.151999653
+print(math.pi)
+# prints the new value i gave it
+```
+
+Now look at *this* code:
+```python
+import merl
+
+print(merl.banned)
+# get every word that's not allowed by Merl.
+
+# lets see how merl feels about pineapples...
+print(merl.sendRaw("I like pineapples."))
+# okay, not bad...
+
+# we'll make them hate pineapples now!
+merl.banned = ["pineapple"]
+print(merl.banned)
+# pineapples. go on!
+print(merl.sendRaw("I like pineapples."))
+# merl now hates pineapples.
+```
+See the utter damage you could do with some hidden code?? That's the beauty of Python's module system. I hope it never changes.
