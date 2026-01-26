@@ -8,16 +8,44 @@
 import random
 from time import sleep
 
-"""
-reply = {
-  "update":["If you are wishing to know the next ", "update, prerelease, or preview, then ", "sorry. I cannot provide that information ", "yet. Can I help you with something else?"],
-}
-"""
-
 msg_blank = {
   "_init_" : [["1", "2"], [1, 1]],
   " S" : [[" o", " b"],[1, 1]],
   "a" : [["blank"], [1]]
+}
+
+msg_test_jackenstien = {
+  "_init_" : [["YOUR", "YOU'RE"], [1, 1]],
+  "YOUR" : [[" TAKING", " TOO", " LONG"], [3, 1, 1]],
+  " TAKING" : [[" TOO"], [1]],
+  " TOO" : [[" LONG!", " TOO!"], [2, 1]],
+  "YOU'RE" : [[" TAKING", " TOO", " LONG"], [3, 1, 1]]
+}
+
+msg_pineapple = {
+  "_init_" : [["I", "No, I"], [1, 1]],
+  "I" : [[" hate", " don't like"],[1, 1]],
+  "No, I" : [[" hate", " don't like"],[1, 1]],
+  " hate" : [[" pineapples...", " pineapples!"],[1, 1]],
+  " don't like" : [[" pineapples."], [1]]
+}
+
+# by the way i made these without using trees or diagrams on sheets of
+# paper, so maybe that's why they're flawed.
+# eh, i'll fix it in the next update. or not. i don't care right now!!
+
+msg_update = {
+  "_init_" : [["If you", "Do you", "Are you"], [8, 1, 8]],
+  "If you" : [[" are asking about the next", " wish to know the next"],[1, 1]],
+  " are asking about the next" : [[" update, prerelease, or preview, then", " update, then"],[1, 1]],
+  " update, prerelease, or preview, then" : [[" sorry.", " I cannot answer that."],[4, 1]],
+  " update, then" : [[" sorry. I don't know that yet.", " sorry, but I don't have the data available to see what it is."],[3, 1]],
+  " wish to know the next" : [[" update, then"],[1]],
+  " wishing to know the next" : [[" update? If so, I cannot provide that information yet. Is there anything else that I can help you with?"],[1]],
+  "Do you" : [[" want to know about the next update? Because I do, too. I don't know what it is, but I'll gladly tell you all about it when it releases!", " want to die?"],[100, 1]], # do you want to die?
+  "Are you" : [[" asking about the next", " wishing to know the next"],[1, 1]],
+  " asking about the next" : [[" updates? Because I don't know about them either.", " versions/drops of Minecraft? Because I don't know about that, either."],[1, 4]],
+  " want to die?" : [[" AGAIN?", "?"], [1, 100]]
 }
 
 msg_copy = {
@@ -43,14 +71,6 @@ msg_copy = {
   " any other way I could" : [[" help?", " help,"],[1, 8]],
   " help with," : [[" besides being something to copy?", " besides being someone to copy?"],[8, 1]],
   " help," : [[" besides being something to copy?", " besides being someone to copy?"],[10, 1]]
-}
-
-msg_pineapple = {
-  "_init_" : [["I", "No, I"], [1, 1]],
-  "I" : [[" hate", " don't like"],[1, 1]],
-  "No, I" : [[" hate", " don't like"],[1, 1]],
-  " hate" : [[" pineapples...", " pineapples!"],[1, 1]],
-  " don't like" : [[" pineapples."], [1]]
 }
 
 msg_greet = {
@@ -95,14 +115,6 @@ msg_pb = {
   " no longer" : [[" with us.", " with me.", " alive.", " allowed here. Mojang is kinda cruel."],[6, 6, 6, 1]]
 }
 
-msg_test_jackenstien = {
-  "_init_" : [["YOUR", "YOU'RE"], [1, 1]],
-  "YOUR" : [[" TAKING", " TOO", " LONG"], [3, 1, 1]],
-  " TAKING" : [[" TOO"], [1]],
-  " TOO" : [[" LONG!", " TOO!"], [2, 1]],
-  "YOU'RE" : [[" TAKING", " TOO", " LONG"], [3, 1, 1]]
-}
-
 msg_movie = {
   "_init_": [["No.", "Sorry", "Nuh uh,"], [4, 2, 1]],
   "No." : [[" No"],[1]],
@@ -132,4 +144,3 @@ def retmark(d: dict):
       final = f"{final}{cur}"
     else: break
   return final
-  print(retmark(msg_copy))
