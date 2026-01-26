@@ -6,21 +6,70 @@
 # perfect (looking at you, 'msg_pb'!).
 
 import random
+from time import sleep
 
 """
 reply = {
-  "cap":["I'm glad you asked! I can", " do basic math with numbers ", "up to fifty seven now. Go on, give ", "me a problem!"],
-  "copy":["I'm sorry, but I am designed to be a ", "guide for 'Minecraft', and not to be ", "copied. Can I help you with anything ", "else?"],
   "update":["If you are wishing to know the next ", "update, prerelease, or preview, then ", "sorry. I cannot provide that information ", "yet. Can I help you with something else?"],
-  "iCanHelp":["I can help you with questions related ", "to Minecraft! What do you need ", "assistance with?"],
-  "greet":["Hello there! I am Merl, a support AI ", "made by Mojang. How can I help you ", "today on the topic of Minecraft?"],
-  "idk2":["I don't know. Can I help you with a ", "question related to Minecraft?"]
 }
 """
+
 msg_blank = {
   "_init_" : [["1", "2"], [1, 1]],
   " S" : [[" o", " b"],[1, 1]],
   "a" : [["blank"], [1]]
+}
+
+msg_copy = {
+  "_init_" : [["I'm sorry, but", "It appears that you are"], [1, 1]],
+  "I'm sorry, but" : [[" as an AI assistant, I", " it appears that you are"],[3, 1]],
+  "It appears that you are" : [[" intentionally", " copying"],[1, 2]],
+  " it appears that you are" : [[" intentionally", " copying"],[2, 1]],
+  " intentionally" : [[" copying"],[1]],
+  " copying" : [[" me.", " my most frequent messages."],[1, 1]],
+  " me." : [[" Is there"],[1]],
+  " as an AI assistant, I" : [[" am designed to be", " cannot stand you."],[100, 1]],
+  " am designed to be" : [[" your guide", " a helper for all your Minecraft needs."],[1, 1]],
+  " a helper for all your Minecraft needs." : [[" Is there"],[1]],
+  " your guide" : [[" to everything", " in regards", " for anything"],[2, 1, 2]],
+  " to everything" : [[" related to", " Minecraft."],[1, 1]],
+  " related to" : [[" Minecraft."],[1]],
+  " in regards" : [[" to everything"],[1]],
+  " to everything" : [[" related to Minecraft.", " Minecraft-related."],[1, 1]],
+  " related to Minecraft." : [[" Is there"], [1]],
+  " Minecraft-related." : [[" Is there"], [1]],
+  " Is there" : [[" anything else you want me to", " any other way I could"],[1, 1]],
+  " anything else you want me to" : [[" help with,"],[1]],
+  " any other way I could" : [[" help?", " help,"],[1, 8]],
+  " help with," : [[" besides being something to copy?", " besides being someone to copy?"],[8, 1]],
+  " help," : [[" besides being something to copy?", " besides being someone to copy?"],[10, 1]]
+}
+
+msg_pineapple = {
+  "_init_" : [["I", "No, I"], [1, 1]],
+  "I" : [[" hate", " don't like"],[1, 1]],
+  "No, I" : [[" hate", " don't like"],[1, 1]],
+  " hate" : [[" pineapples...", " pineapples!"],[1, 1]],
+  " don't like" : [[" pineapples."], [1]]
+}
+
+msg_greet = {
+  "_init_" : [["Hello", "Hi", "Greetings!", "..not YOU again."], [100, 100, 100, 1]],
+  "Hello" : [[" there", "! I am Merl", "! I am M"],[6, 7, 1]],
+  "! I am M" : [["M", "erl"],[9, 5]],
+  "M" : [["M", "erl"],[19, 1]],
+  "erl" : [[", your"],[1]],
+  "Hi" : [[" there", "! I am Merl"],[1, 1]],
+  "Greetings!" : [[" I am Merl", " My name is Merl"],[1, 1]],
+  " there" : [[", I am Merl", "! I am Merl"],[1, 1]],
+  ", I am Merl" : [[", your", ". How can I help you today"],[1, 1]],
+  "! I am Merl" : [[", your", ". How can I help you today"],[1, 1]],
+  " I am Merl" : [[", your", ". How can I help you today"],[1, 1]],
+  " My name is Merl" : [[", your", ". How can I help you today"],[1, 1]],
+  ", your" : [[" assistant for all things Minecraft", " AI-Powered"],[1, 1]],
+  " AI-Powered" : [[" assistant for all things Minecraft"],[1]],
+  " assistant for all things Minecraft" : [["!"],[1]],
+  ". How can I help you today" : [[" on the topic of Minecraft?", "?"],[1, 1]]
 }
 
 msg_pb = {
@@ -43,8 +92,7 @@ msg_pb = {
   "%j" : [["Peanut", "%j"],[1, 8]],
   "Peanut" : [[" Butter is", " Butter died."],[1, 1]],
   " Butter is" : [[" no longer", " dead.", " is also an AI, like me!"],[3, 3, 1]],
-  " no longer" : [[" with us.", " with me.", " alive.", " allowed here. Mojang is kinda cruel."],[6, 6, 6, 1]],
-  "a" : [["blank"], [1]]
+  " no longer" : [[" with us.", " with me.", " alive.", " allowed here. Mojang is kinda cruel."],[6, 6, 6, 1]]
 }
 
 msg_test_jackenstien = {
@@ -84,7 +132,4 @@ def retmark(d: dict):
       final = f"{final}{cur}"
     else: break
   return final
-
-
-for x in range(10):
-  print(retmark(msg_pb))
+  print(retmark(msg_copy))
