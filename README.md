@@ -1,3 +1,5 @@
+![image](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
+
 # merl
 An open-source useless python library that emulates (not fetches) some of Merl's most popular responses and answers. This may include some bonus ones that Merl does not actually say in the real thing, but come on who doesn't love a Minecraft Movie easter egg? Developed using the code.org IDE, because why not.
 Use the following line on Windows to import merl:
