@@ -35,6 +35,20 @@ print(merl.sendRaw("Hello"))
 ```
 Because it has no unprinting function, this function is less likely to break the terminal.
 
+
+---
+## Example Program using send()
+This is an example program (used by me!) to test Merl's capabilities and features:
+```Python
+import merl
+a = ""
+
+while a != "!leave":
+  a = input("<you> ")
+  merl.send(a)
+```
+
+
 ---
 ## Modes
 **NOTE: THESE FEATURES DO NOT WORK ON ACTUAL MERL, JUST PYTHON MERL!**
@@ -51,18 +65,6 @@ Simply type "resetInputs" to have them go back to normal! Like this:
 
 ```Python
 merl.send("resetInputs")
-```
-
----
-## Example Program using send()
-This is an exaple program (used by me) to test Merl's capabilities and features:
-```Python
-import merl
-a = ""
-
-while a != "!leave":
-  a = input("<you> ")
-  merl.send(a)
 ```
 
 
