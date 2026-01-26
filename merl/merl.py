@@ -10,6 +10,7 @@ p.s. Hi, PhoenixSC!
 import time
 import random
 import re
+import merlkov
 
 CURSOR_UP = "\033[1A"
 CLEAR = "\x1b[2K"
@@ -27,8 +28,7 @@ ope = ["plus", "minus", "times", "divided by"]
 
 
 # Oops! Can't have users cursing in MY module!
-# We don't want to have a repeat of Project Gray Kiwi, now do we?
-banned = ["pee", "poo", "fuc", "shi", "damn", " hell ", "nig", "bitc", "craft a", "kil", "unaliv", "die", "slas", "end update", "viola", "dam", "frick", "hecking", "sex", "nut", "virgin", "weed", "sucks", "sybau", "shut up", "shut it", "feral", "shish", "gang", "diarrhea"]
+banned = [" ass", "pee", "poo", "fuc", "shi", "damn", " hell ", "nig", "bitc", "craft a", "kil", "unaliv", "die", "slas", "end update", "viola", "dam", "frick", "hecking", "sex", "nut", "virgin", "weed", "sucks", "sybau", "shut up", "shut it", "feral", "shish", "gang", "diarrhea"]
 
 # in case ppl ask about the future!
 future = ["update", "snapshot", "rerelea", "preview", "leak", "spoiler"]
@@ -114,6 +114,14 @@ def replyMsg(cate: str):
     a = f"{a}{reply[cate][x]}"
   return a
 
+def markprintanim(msg: str):
+  split_msg = msg.split()
+  f = ""
+  for x in range(len(split_msg)):
+    f = f"{f} {split_msg[x]}"
+    if x % 7 == 0: print(""); f = split_msg[x]
+    print(CLEAR_LINE, f)
+    time.sleep(0.01)
 
 def printanim(msg: str):
   split_msg = msg.split()
@@ -148,15 +156,15 @@ def sendRaw(prompt: str):
     if hour >= 9 and hour <= 16 and random.randint(0, 16) < 4:
       return replyMsg("busy")
     else:
-      if any(sub.lower() in prompt.lower() for sub in copyin): return replyMsg("copy")
+      if any(sub.lower() in prompt.lower() for sub in copyin): return merlkov.retmark(merlkov.msg_copy)
       elif any(sub.lower() in prompt.lower() for sub in banned): return replyMsg("languageViolation")
       elif any(sub.lower() in prompt.lower() for sub in capable): return replyMsg("cap")
-      elif any(sub.lower() in prompt.lower() for sub in future): return replyMsg("update")
-      elif any(sub.lower() in prompt.lower() for sub in pb): return replyMsg("pb")
+      elif any(sub.lower() in prompt.lower() for sub in future): return merlkov.retmark(merlkov.msg_update)
+      elif any(sub.lower() in prompt.lower() for sub in pb): return merlkov.retmark(merlkov.msg_pb)
       elif any(sub.lower() in prompt.lower() for sub in help): return replyMsg("iCanHelp") # can you really?
       elif any(sub.lower() in prompt.lower() for sub in mine): return replyMsg("minecraft")
-      elif any(sub.lower() in prompt.lower() for sub in cj): return replyMsg("movie")
-      elif any(sub.lower() in prompt.lower() for sub in greet): return replyMsg("greet")
+      elif any(sub.lower() in prompt.lower() for sub in cj): return merlkov.retmark(merlkov.msg_movie)
+      elif any(sub.lower() in prompt.lower() for sub in greet): return merlkov.retmark(merlkov.msg_greet)
       else:
         if result != None:
           return restring
@@ -196,23 +204,23 @@ def replyPrint(prompt: str):
     for x in range(len(reply["busy"])): printanim(reply["busy"][x])
   else:
     if any(sub.lower() in prompt.lower() for sub in copyin):
-      for x in range(len(reply["copy"])): printanim(reply["copy"][x])
+      markprintanim(merlkov.retmark(merlkov.msg_copy))
     elif any(sub.lower() in prompt.lower() for sub in banned):
       for x in range(len(reply["languageViolation"])): printanim(reply["languageViolation"][x])
     elif any(sub.lower() in prompt.lower() for sub in capable):
       for x in range(len(reply["cap"])): printanim(reply["cap"][x])
     elif any(sub.lower() in prompt.lower() for sub in future):
-      for x in range(len(reply["update"])): printanim(reply["update"][x])
+      markprintanim(merlkov.retmark(merlkov.msg_update))
     elif any(sub.lower() in prompt.lower() for sub in pb):
-      for x in range(len(reply["pb"])): printanim(reply["pb"][x])
+      markprintanim(merlkov.retmark(merlkov.msg_pb))
     elif any(sub.lower() in prompt.lower() for sub in help):
       for x in range(len(reply["iCanHelp"])): printanim(reply["iCanHelp"][x])
     elif any(sub.lower() in prompt.lower() for sub in mine):
       printanim("Minecraft!") # the thing that won't change.
     elif any(sub.lower() in prompt.lower() for sub in cj):
-      for x in range(len(reply["movie"])): printanim(reply["movie"][x])
+      markprintanim(merlkov.retmark(merlkov.msg_movie))
     elif any(sub.lower() in prompt.lower() for sub in greet):
-      for x in range(len(reply["greet"])): printanim(reply["greet"][x])
+      markprintanim(merlkov.retmark(merlkov.msg_greet))
     else:
       if result != None:
         printanim(restring)
