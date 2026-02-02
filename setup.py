@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='merl',
-    version='0.2.0',    
+    version='0.2.1',    
     description='A useless python library, aiming to emulate (not fetch/embed) the Merl experience found on the minecraft.net help page! Again, this is NOT the real Merl, but a really close copy! If you use it enough!',
     url='https://github.com/O9Creeps/merl',
     author='O9CreeperBoi',
