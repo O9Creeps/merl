@@ -10,7 +10,7 @@ p.s. Hi, PhoenixSC!
 import time
 import random
 import re
-import merlkov
+from . import merlkov
 
 CURSOR_UP = "\033[1A"
 CLEAR = "\x1b[2K"
